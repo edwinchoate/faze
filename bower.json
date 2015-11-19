@@ -1,0 +1,17 @@
+{
+  "name": "faze",
+  "homepage": "https://github.com/edwinchoate/faze",
+  "authors": [
+    "edwinchoate <edwin.choate@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "Processing.js": "~1.4.16",
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
+    "font-awesome": "fontawesome#~4.4.0"
+  }
+}
