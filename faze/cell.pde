@@ -24,7 +24,8 @@ public class Cell {
   
   public void drawCell () {
     fill(cellColor);
-    stroke(#000000);
+    //stroke(#000000);
+    noStroke();
     renderRect();
   }
   
@@ -33,7 +34,8 @@ public class Cell {
     this.b = newBrightness;
     this.cellColor = color(h, s, b);
     fill(color(h, s, b));
-    stroke(#000000);
+    //stroke(#000000);
+    noStroke();
     renderRect();
   }
   

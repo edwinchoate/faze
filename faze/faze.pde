@@ -9,14 +9,17 @@
  
  
  int n, m;
- int topMargin, leftMargin, cellSize;
+ int topMargin, leftMargin, cellSize, boardWidth, boardHeight;
  Cell[][] grid;
  color primaryColor, secondaryColor, bgColor, borderColor;
  boolean setupGame;
  
  void setup() {
    
-   size(displayWidth, displayHeight);
+   boardWidth = 960;
+   boardHeight = 720;
+   
+   size(960, 720);
    if (surface != null) {
      surface.setResizable(true); 
    }
@@ -28,12 +31,12 @@
    
    setupGame = true;
    
-   n = 20;
-   m = 10;
+   n = 32;
+   m = 16;
    grid = new Cell[n][m];
-   topMargin = displayHeight / 8;
-   leftMargin = displayWidth / 8;
-   cellSize = (displayWidth - 2 * leftMargin) / n;
+   topMargin = boardHeight / 8;
+   leftMargin = boardWidth / 8;
+   cellSize = (boardWidth - 2 * leftMargin) / n;
    
  }
  
@@ -88,5 +91,5 @@
  
  
  boolean isInGrid () {
-   return mouseX > leftMargin && mouseX < displayWidth - leftMargin && mouseY > topMargin && mouseY < displayHeight - topMargin; 
+   return mouseX > leftMargin && mouseX < boardWidth - leftMargin && mouseY > topMargin && mouseY < boardHeight - topMargin; 
  }
