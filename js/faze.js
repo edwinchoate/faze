@@ -1,6 +1,7 @@
 
 // the game board DOM element. All of the buttons (cells) lie inside this div
 var $gameBoard = $("#game-board");
+var gameBoardWidth = 1140; // pixel width
 
 
 // loads buttons (cells of game board) into game-board on page
