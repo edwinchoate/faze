@@ -1,0 +1,16 @@
+a .cell {
+  float: left;
+  font-size: 0;
+  border: none;
+  width: 23.75px;
+  height: 23.75px;
+  background-color: #777777; }
+  a .cell:focus {
+    outline: 0; }
+
+#game-board {
+  width: 1140px;
+  padding: 0;
+  border: none; }
+
+/*# sourceMappingURL=style.css.map */
