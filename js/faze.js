@@ -6,16 +6,6 @@ var $playerValue = $("#player-value");
 var $clicksValue = $("#clicks-value");
 
 
-// loads buttons (cells of game board) into game-board on page
-// param boardSize how many buttons to add to the game-board
-function loadCells(boardSize) {
-    for (var i = 0; i < boardSize; i++) {
-        var newCell = "<a><button class=\"cell\"></button></a>";
-        $gameBoard.append(newCell);
-    }
-}
-
-
 // lighten a given hex color by a certain percentage
 // param color The original color
 // param amount The percentage change in color
@@ -149,33 +139,83 @@ function fadeGameBoard(amount) {
 // faze game -- IIFE main
 (function main() {
     
-    $gameBoard.hide();
-    $statsBar.hide();
+    // hide gameboard at start of program
+//    $gameBoard.hide();
+//    $statsBar.hide();
     
-    
+    // player 1 takes the first turn
     var currentPlayer = 1;
     var clickMax, clickCount;
+    // number of clicks a player is allowed each turn
     clickMax = 25;
     clickCount = clickMax;
     
-    var gameBoardColsDefault = 48;
-    var gameBoardRatioX = 2;
-    var gameBoardRatioY = 1 ;
-    var gameBoardRowsDefault = Math.floor(gameBoardColsDefault * gameBoardRatioY / gameBoardRatioX);
-    var gameBoardSize = gameBoardColsDefault * gameBoardRowsDefault;
-    console.log("game board is", gameBoardColsDefault, "by", gameBoardRowsDefault, gameBoardSize);
+    // game board can take on three sizes (number of columns)
+    // 32 cols (lg cells), 48 cols (md cells, default), 64 (sm cells)
+    var $gameBoardSize = 48; // default size = medium
+    var selectedSize = "";
+
+    // click handler to set game size
+    $gridSelector = $(".grid-selector");
+    $gridSelector.on("click", function() {
+        $this = $(this);
+        
+        if ($this.hasClass("grid-selector-sm")) {
+            selectedSize = "sm";
+            $gameBoardSize = 64;
+        } else if ($this.hasClass("grid-selector-lg")) {
+            selectedSize = "lg";
+            $gameBoardSize = 32;
+        } else { // otherwise medium is already the default set size
+            selectedSize = "md";
+            $gameBoardSize = 48;
+        }
+        
+        console.log("you selected", selectedSize, $gameBoardSize);
+        buildGame();
+        
+    });
     
-    // populate the game-board with cells
-    loadCells(gameBoardSize);
-    var $cells = $(".cell");
+    // calculate game board size and populate with cells
+    function buildGame() {
+        // game board has gameBoardRatioX by gameBoardRatioY aspect ratio
+        var gameBoardRatioX = 2;
+        var gameBoardRatioY = 1 ;
+        // total number of cells rows on $gameBoard
+        var gameBoardRows = Math.floor($gameBoardSize * gameBoardRatioY / gameBoardRatioX);
+        var cellTotal = $gameBoardSize * gameBoardRows;
+        console.log("game board is", $gameBoardSize, "by", gameBoardRows, cellTotal);
+        
+        // add cell elements to game board elements
+        for (var i = 0; i < cellTotal; i++) {
+            if (selectedSize === "sm") {
+                var newCell = "<a><button class=\"cell cell-sm\"></button></a>";
+            } else if (selectedSize === "lg") {
+                var newCell = "<a><button class=\"cell cell-lg\"></button></a>";
+            } else { // game board defaults to md size
+                var newCell = "<a><button class=\"cell cell-md\"></button></a>";
+            }
+            
+            $gameBoard.append(newCell);
+        }
+        
+        // click handler for drawing on a cell
+        $(".cell").on("click", darkenCell);
+        $(".cell").on("click", clickCell);
+        
+    }
+
     
+     // updates text display below game board (current player and clicks left)
     function updateStatDisplay () {
         $playerValue.text(currentPlayer);
         $clicksValue.text(clickCount);
     }
     
+    // show stats as game begins
     updateStatDisplay();
     
+    // game logic for when player clicks a cell
     function clickCell () {
         clickCount--;
         
@@ -192,9 +232,7 @@ function fadeGameBoard(amount) {
         updateStatDisplay();
     }
     
-    // click handler for drawing on a cell
-    $cells.on("click", darkenCell);
-    $cells.on("click", clickCell);
+    
     
 })();
 

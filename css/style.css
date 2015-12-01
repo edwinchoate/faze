@@ -8,9 +8,7 @@ a .base-cell, a .cell, a .cell-sm, a .cell-md, a .cell-lg {
   a .base-cell:focus, a .cell:focus, a .cell-sm:focus, a .cell-md:focus, a .cell-lg:focus {
     outline: 0; }
 a .cell {
-  float: left;
-  width: 23.75px;
-  height: 23.75px; }
+  float: left; }
 a .cell-sm {
   width: 18px;
   height: 18px; }

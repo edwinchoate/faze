@@ -1,10 +1,6 @@
 
 
 $game-board-width: 1140px;
-// game board has an aspect ratio defined in faze.js
-$game-board-cols-default: 48;
-$cell-width: $game-board-width / $game-board-cols-default;
-$cell-height: $cell-width;
 
 // starting color of the game board cells
 $game-board-base-color: #ccc;
@@ -33,10 +29,7 @@ a {
     
     .cell {
         @extend .base-cell;
-        float: left;
-        
-        width: $cell-width;
-        height: $cell-height;     
+        float: left;    
     }
     
     .cell-sm {
