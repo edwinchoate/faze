@@ -1,33 +1,70 @@
 
 
 $game-board-width: 1140px;
-// game board has 16:9 aspect ratio
+// game board has an aspect ratio defined in faze.js
 $game-board-cols-default: 48;
 $cell-width: $game-board-width / $game-board-cols-default;
 $cell-height: $cell-width;
 
 // starting color of the game board cells
 $game-board-base-color: #ccc;
+$bg-color: lighten($game-board-base-color, 15%);
+$footer-bg-color: lighten($game-board-base-color, 10%);
 
+html, body {
+    background-color: $bg-color;
+}
 
 a {
-    .cell {
+    
+    .base-cell {
         // removes whitespace in between cells of game board
-        float: left;
+        
         font-size: 0;
         
-        // base cell styling
-        border: none;
-        width: $cell-width;
-        height: $cell-height;
         background-color: $game-board-base-color;
+        border: none;
         
-        // removes annoying blue border from buttons
+         // removes annoying blue border from buttons
         &:focus {
             outline: 0;
         }
     }
+    
+    .cell {
+        @extend .base-cell;
+        float: left;
+        
+        width: $cell-width;
+        height: $cell-height;     
+    }
+    
+    .cell-sm {
+        @extend .base-cell;
+        
+        $cell-dim-sm: 18px;
+        width: $cell-dim-sm;
+        height: $cell-dim-sm;
+    }
+    
+    .cell-md {
+        @extend .base-cell;
+        
+        $cell-dim-md: 24px;
+        width: $cell-dim-md;
+        height: $cell-dim-md;
+    }
+    
+    .cell-lg {
+        @extend .base-cell;
+        
+        $cell-dim-lg: 36px;
+        width: $cell-dim-lg;
+        height: $cell-dim-lg;
+    }
+    
 }
+
 
 header {
     margin: 64px 0 12px 0;
@@ -37,8 +74,41 @@ header {
     }
 }
 
+.wrapper {
+    position: relative;
+    min-height: 100%;
+}
+
+#content {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 200px;
+}
+
 footer {
-    margin: 128px 0 96px 0;
+    position: absolute;
+        bottom: 0;
+        left: 0;
+    background-color: $footer-bg-color;
+    width: 100%;
+    padding: 96px 0 72px 0;
+   
+}
+
+#intro-panel {
+    width: $game-board-width;
+    height: $game-board-width / 2;
+    
+    $part-game-board-h: $game-board-width / 16;
+    #grid-selector-group, #game-start-btn {
+        padding: $part-game-board-h 0 $part-game-board-h 0;
+        margin: 0 auto 0 auto;
+        
+        .grid-selector {
+            margin: 0 32px 0 32px;
+        }
+    }
+    
 }
 
 #game-board {

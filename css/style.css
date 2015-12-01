@@ -1,20 +1,56 @@
+html, body {
+  background-color: #f2f2f2; }
+
+a .base-cell, a .cell, a .cell-sm, a .cell-md, a .cell-lg {
+  font-size: 0;
+  background-color: #ccc;
+  border: none; }
+  a .base-cell:focus, a .cell:focus, a .cell-sm:focus, a .cell-md:focus, a .cell-lg:focus {
+    outline: 0; }
 a .cell {
   float: left;
-  font-size: 0;
-  border: none;
   width: 23.75px;
-  height: 23.75px;
-  background-color: #ccc; }
-  a .cell:focus {
-    outline: 0; }
+  height: 23.75px; }
+a .cell-sm {
+  width: 18px;
+  height: 18px; }
+a .cell-md {
+  width: 24px;
+  height: 24px; }
+a .cell-lg {
+  width: 36px;
+  height: 36px; }
 
 header {
   margin: 64px 0 12px 0; }
   header .help-link {
     margin: 8px; }
 
+.wrapper {
+  position: relative;
+  min-height: 100%; }
+
+#content {
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 200px; }
+
 footer {
-  margin: 128px 0 96px 0; }
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #e6e6e6;
+  width: 100%;
+  padding: 96px 0 72px 0; }
+
+#intro-panel {
+  width: 1140px;
+  height: 570px; }
+  #intro-panel #grid-selector-group, #intro-panel #game-start-btn {
+    padding: 71.25px 0 71.25px 0;
+    margin: 0 auto 0 auto; }
+    #intro-panel #grid-selector-group .grid-selector, #intro-panel #game-start-btn .grid-selector {
+      margin: 0 32px 0 32px; }
 
 #game-board {
   width: 1140px;

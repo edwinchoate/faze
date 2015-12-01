@@ -18,6 +18,8 @@
     </head>
     <body>
         
+        <div class="wrapper">
+        
         <!-- game header contains logo, New Game button, help button -->
         <header class="container">
             <div class="row">
@@ -30,7 +32,30 @@
             </div>
         </header>
         
+        <div id="content"> <!-- content beginning -->
         <main class="container">
+            <!-- intro panel for selecting game preferences -->
+            <div id="intro-panel">
+                <div class="row">
+                    <h2 class="text-center">Pick a size&#8230;</h2>
+                    <div id="grid-selector-group" class="text-center">
+                        <span class="grid-selector" class="col-sm-2 col-sm-offset-3 col-xs-4">
+                            <a><button class="cell-sm"></button></a>
+                        </span>
+                        <span class="grid-selector" class="col-sm-2 col-xs-4">
+                            <a><button class="cell-md"></button></a>
+                        </span>
+                        <span class="grid-selector" class="col-sm-2 col-xs-4">
+                            <a><button class="cell-lg"></button></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="game-start-btn" class="text-center">
+                        <span class="col-sm-6 col-sm-offset-3 col-xs-12"><button class="btn btn-lg btn-default">Start Drawing!</button></span>
+                    </div>
+                </div>
+            </div>
             <!-- main game board element which holds cells -->
             <div id="game-board"></div>
             
@@ -44,11 +69,14 @@
                 </div>
             </div>
         </main>
+        </div> <!-- content end -->
         
         <!-- page footer -->
-        <footer class="container">
-            
+        <footer class="container-fluid">
+            <p class="text-center">footer</p>
         </footer>
+            
+        </div> <!-- wrapper end -->
         
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="js/faze.js"></script>

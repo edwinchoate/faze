@@ -1,6 +1,7 @@
 
 // the game board DOM element. All of the buttons (cells) lie inside this div
 var $gameBoard = $("#game-board");
+var $statsBar = $("#stats-bar");
 var $playerValue = $("#player-value");
 var $clicksValue = $("#clicks-value");
 
@@ -147,6 +148,10 @@ function fadeGameBoard(amount) {
 
 // faze game -- IIFE main
 (function main() {
+    
+    $gameBoard.hide();
+    $statsBar.hide();
+    
     
     var currentPlayer = 1;
     var clickMax, clickCount;
