@@ -4,8 +4,8 @@
         <title>faze</title>
     
         <meta charset="UTF-8">
-        <meta name="keywords" content="faze, Faze, game, faze game, Faze Game, Edwin Choate, puzzle, challenge, drawing, multiplayer">
-        <meta name="description" content="Faze is a turn-based game where players draw with opacity.">
+        <meta name="keywords" content="faze, Faze, game, faze game, Faze Game, puzzle, challenge, drawing, multiplayer">
+        <meta name="description" content="Faze is a turn-based game where players draw with opacity. As players draw, their previous work fades away...">
         <meta name="author" content="Edwin Choate, edwin.choate@gmail.com">
         <meta name="url" content="edwinchoate.github.io/faze">
         
@@ -18,15 +18,37 @@
     </head>
     <body>
         
-        <header></header>
+        <!-- game header contains logo, New Game button, help button -->
+        <header class="container">
+            <div class="row">
+                <!-- main logo for faze -->
+                <span class="col-xs-6"><h1>faze</h1></span>
+                <!-- new game button -->
+                <span class="col-xs-6"><h1><a href = "index.html" class="button btn btn-default btn-lg pull-right">New Game</a></h1></span>
+                <!-- help link -->
+                <span class="col-xs-12"><a href="#" class="pull-right help-link"><i class="fa fa-info-circle"></i> How do I play?</a></span>
+            </div>
+        </header>
         
         <main class="container">
+            <!-- main game board element which holds cells -->
+            <div id="game-board"></div>
             
-                <div id="game-board" class="col-xs-12"></div>
-            
+            <div class="container">
+                <!-- stats bar contains current player turn and remaining click count -->
+                <div id="stats-bar">
+                    <div class="row">
+                        <span class="col-xs-6"><h3>Now Drawing: Player <span id="player-value"></span></h3></span>
+                        <span class="col-xs-6"><h3 class="pull-right">Clicks left: <span id="clicks-value"></span></h3></span>
+                    </div>
+                </div>
+            </div>
         </main>
         
-        <footer></footer>
+        <!-- page footer -->
+        <footer class="container">
+            
+        </footer>
         
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="js/faze.js"></script>

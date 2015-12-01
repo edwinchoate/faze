@@ -1,7 +1,8 @@
 
 // the game board DOM element. All of the buttons (cells) lie inside this div
 var $gameBoard = $("#game-board");
-var gameBoardWidth = 1140; // pixel width
+var $playerValue = $("#player-value");
+var $clicksValue = $("#clicks-value");
 
 
 // loads buttons (cells of game board) into game-board on page
@@ -130,7 +131,7 @@ function darkenCell() {
     $oldColor = rgbToHex(parseInt(colors[0]), parseInt(colors[1]), parseInt(colors[2]));
 
     // darkens the original color by X percent
-    var newColor = darkenColor($oldColor, "10%");
+    var newColor = darkenColor($oldColor, "4%");
     
     // resets the css for the appropriate button (cell)
     $cell.css("background-color", newColor);
@@ -147,6 +148,11 @@ function fadeGameBoard(amount) {
 // faze game -- IIFE main
 (function main() {
     
+    var currentPlayer = 1;
+    var clickMax, clickCount;
+    clickMax = 25;
+    clickCount = clickMax;
+    
     var gameBoardColsDefault = 48;
     var gameBoardRatioX = 2;
     var gameBoardRatioY = 1 ;
@@ -158,7 +164,41 @@ function fadeGameBoard(amount) {
     loadCells(gameBoardSize);
     var $cells = $(".cell");
     
+    function updateStatDisplay () {
+        $playerValue.text(currentPlayer);
+        $clicksValue.text(clickCount);
+    }
+    
+    updateStatDisplay();
+    
+    function clickCell () {
+        clickCount--;
+        
+        if (clickCount < 1) {
+            if (currentPlayer === 1) {
+                currentPlayer = 2;
+            } else {
+                currentPlayer = 1;
+            }
+            
+            clickCount = clickMax;
+        }
+        
+        updateStatDisplay();
+    }
+    
     // click handler for drawing on a cell
     $cells.on("click", darkenCell);
+    $cells.on("click", clickCell);
     
 })();
+
+
+
+
+
+
+
+
+
+

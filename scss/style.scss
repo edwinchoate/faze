@@ -7,7 +7,7 @@ $cell-width: $game-board-width / $game-board-cols-default;
 $cell-height: $cell-width;
 
 // starting color of the game board cells
-$game-board-base-color: #777777;
+$game-board-base-color: #ccc;
 
 
 a {
@@ -29,9 +29,24 @@ a {
     }
 }
 
+header {
+    margin: 64px 0 12px 0;
+    
+    .help-link {
+        margin: 8px;
+    }
+}
+
+footer {
+    margin: 128px 0 96px 0;
+}
 
 #game-board {
     width: $game-board-width;
     padding: 0;
     border: none;
+}
+
+#stats-bar {
+    margin: 16px 0 0 0;
 }
