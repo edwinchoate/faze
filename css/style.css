@@ -10,14 +10,14 @@ a .base-cell, a .cell, a .cell-sm, a .cell-md, a .cell-lg {
 a .cell {
   float: left; }
 a .cell-sm {
-  width: 18px;
-  height: 18px; }
+  width: 17.8125px;
+  height: 17.8125px; }
 a .cell-md {
-  width: 24px;
-  height: 24px; }
+  width: 23.75px;
+  height: 23.75px; }
 a .cell-lg {
-  width: 36px;
-  height: 36px; }
+  width: 35.625px;
+  height: 35.625px; }
 
 header {
   margin: 64px 0 12px 0; }
@@ -55,7 +55,8 @@ footer {
   padding: 0;
   border: none; }
 
-#stats-bar {
-  margin: 16px 0 0 0; }
+.stat {
+  padding-top: 16px;
+  padding-bottom: 72px; }
 
 /*# sourceMappingURL=style.css.map */

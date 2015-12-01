@@ -140,8 +140,8 @@ function fadeGameBoard(amount) {
 (function main() {
     
     // hide gameboard at start of program
-//    $gameBoard.hide();
-//    $statsBar.hide();
+    $gameBoard.hide();
+    $statsBar.hide();
     
     // player 1 takes the first turn
     var currentPlayer = 1;
@@ -172,7 +172,10 @@ function fadeGameBoard(amount) {
         }
         
         console.log("you selected", selectedSize, $gameBoardSize);
-        buildGame();
+        $("#start-btn").on("click", function() {
+            $("#intro-panel").hide();
+            buildGame();
+        });
         
     });
     
@@ -186,6 +189,7 @@ function fadeGameBoard(amount) {
         var cellTotal = $gameBoardSize * gameBoardRows;
         console.log("game board is", $gameBoardSize, "by", gameBoardRows, cellTotal);
         
+        $gameBoard.empty();
         // add cell elements to game board elements
         for (var i = 0; i < cellTotal; i++) {
             if (selectedSize === "sm") {
@@ -203,6 +207,8 @@ function fadeGameBoard(amount) {
         $(".cell").on("click", darkenCell);
         $(".cell").on("click", clickCell);
         
+        $($gameBoard).show();
+        $($statsBar).show();
     }
 
     

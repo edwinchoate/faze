@@ -35,7 +35,7 @@ a {
     .cell-sm {
         @extend .base-cell;
         
-        $cell-dim-sm: 18px;
+        $cell-dim-sm: $game-board-width / 64;
         width: $cell-dim-sm;
         height: $cell-dim-sm;
     }
@@ -43,7 +43,7 @@ a {
     .cell-md {
         @extend .base-cell;
         
-        $cell-dim-md: 24px;
+        $cell-dim-md: $game-board-width / 48;
         width: $cell-dim-md;
         height: $cell-dim-md;
     }
@@ -51,7 +51,7 @@ a {
     .cell-lg {
         @extend .base-cell;
         
-        $cell-dim-lg: 36px;
+        $cell-dim-lg: $game-board-width / 32;
         width: $cell-dim-lg;
         height: $cell-dim-lg;
     }
@@ -110,6 +110,7 @@ footer {
     border: none;
 }
 
-#stats-bar {
-    margin: 16px 0 0 0;
+.stat {
+    padding-top: 16px;
+    padding-bottom: 72px;
 }
