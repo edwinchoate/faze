@@ -2,8 +2,11 @@
 // the game board DOM element. All of the buttons (cells) lie inside this div
 var $gameBoard = $("#game-board");
 var $statsBar = $("#stats-bar");
-var $playerValue = $("#player-value");
-var $clicksValue = $("#clicks-value");
+var $notificationPanel = $("#notification-panel");
+var $playerValue = $(".player-value");
+var $clicksValue = $(".clicks-value");
+var $roundValue = $(".round-value");
+var stillPlaying = true;
 
 
 // lighten a given hex color by a certain percentage
@@ -140,15 +143,22 @@ function fadeGameBoard(amount) {
 (function main() {
     
     // hide gameboard at start of program
-    $gameBoard.hide();
-    $statsBar.hide();
+    var objectsToHide = [$gameBoard, $statsBar, $notificationPanel];
+    for (var i = 0; i < objectsToHide.length; i++) {
+        objectsToHide[i].hide();
+    }
     
     // player 1 takes the first turn
     var currentPlayer = 1;
-    var clickMax, clickCount;
+    var clickMax, clickCount, roundMax, roundCount;
     // number of clicks a player is allowed each turn
-    clickMax = 25;
+    clickMax = 5;
     clickCount = clickMax;
+    // number of rounds in the game
+    // a round is defined as one turn taken by each player
+    roundMax = 5;
+    roundCount = 1;
+    $(".round-max").text(roundMax);
     
     // game board can take on three sizes (number of columns)
     // 32 cols (lg cells), 48 cols (md cells, default), 64 (sm cells)
@@ -177,6 +187,13 @@ function fadeGameBoard(amount) {
             buildGame();
         });
         
+    });
+    
+    // click handler for the notification panel
+    $notificationPanel.on("click", "#start-turn-btn", function () {
+        $notificationPanel.hide();
+        $gameBoard.show();
+        $statsBar.show();
     });
     
     // calculate game board size and populate with cells
@@ -216,6 +233,7 @@ function fadeGameBoard(amount) {
     function updateStatDisplay () {
         $playerValue.text(currentPlayer);
         $clicksValue.text(clickCount);
+        $roundValue.text(roundCount);
     }
     
     // show stats as game begins
@@ -223,24 +241,52 @@ function fadeGameBoard(amount) {
     
     // game logic for when player clicks a cell
     function clickCell () {
-        clickCount--;
-        
-        if (clickCount < 1) {
-            if (currentPlayer === 1) {
-                currentPlayer = 2;
-            } else {
-                currentPlayer = 1;
+        if (stillPlaying) {
+            clickCount--;
+            var inFinalTurn = roundCount >= roundMax && currentPlayer == 2;
+
+            // when a player has no clicks left
+            if (clickCount <= 0) {
+
+                if (inFinalTurn) {
+                    $statsBar.empty();
+                    // rewrite the stats bar
+                    $statsBar.append(
+                        "<span class=\"stat col-xs-12\">" +
+                            "<h3 class=\"text-center\">Game Completed! <a href=\"index.html\">Play again?</a></h3>" +
+                        "</span>"
+                    );
+                    stillPlaying = false;
+                }
+
+                // switch players
+                if (currentPlayer === 1) {
+                    currentPlayer = 2;
+                } else {
+                    currentPlayer = 1;
+                    // next round
+                    roundCount++;
+                }
+
+
+                // reset click counter
+                clickCount = clickMax;
+
+                // display next player's turn on screen
+                if (!inFinalTurn) {
+                    $gameBoard.hide();
+                    $statsBar.hide();
+                    $notificationPanel.show();
+                }
             }
-            
-            clickCount = clickMax;
+
+            updateStatDisplay();
         }
-        
-        updateStatDisplay();
     }
     
     
     
-})();
+})(); // end of main function
 
 
 

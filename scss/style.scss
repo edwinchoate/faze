@@ -11,6 +11,13 @@ html, body {
     background-color: $bg-color;
 }
 
+a, button, btn {
+    // removes annoying blue border from buttons
+    &:focus {
+        outline: 0 !important;
+    }
+}
+
 a {
     
     .base-cell {
@@ -20,11 +27,6 @@ a {
         
         background-color: $game-board-base-color;
         border: none;
-        
-         // removes annoying blue border from buttons
-        &:focus {
-            outline: 0;
-        }
     }
     
     .cell {
@@ -88,9 +90,13 @@ footer {
    
 }
 
-#intro-panel {
+.panel {
     width: $game-board-width;
     height: $game-board-width / 2;
+}
+
+#intro-panel {
+   @extend .panel;
     
     $part-game-board-h: $game-board-width / 16;
     #grid-selector-group, #game-start-btn {
@@ -102,6 +108,18 @@ footer {
         }
     }
     
+}
+
+#notification-panel {
+    @extend .panel;
+    
+    h1, h2, h3, h4, h5, h6, button {
+        margin: 64px;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        padding-top: 64px !important;
+    }
 }
 
 #game-board {

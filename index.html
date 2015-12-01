@@ -56,14 +56,27 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="notification-panel">
+                <div class="row">
+                    <span class="col-xs-12 text-center"><h1>It's Player <span class="player-value"></span>&#39;s turn!</h1></span>
+                    <span class="col-xs-12 text-center"><button id="start-turn-btn" class="btn btn-lg btn-default">Continue</button></span>
+                </div>
+            </div>
+            
             <!-- main game board element which holds cells -->
             <div id="game-board"></div>
             
             <!-- stats bar contains current player turn and remaining click count -->
             <div class="row">
             <div id="stats-bar">
-                    <span class="stat col-xs-6"><h3>Now Drawing: Player <span id="player-value"></span></h3></span>
-                    <span class="stat col-xs-6"><h3 class="pull-right">Clicks left: <span id="clicks-value"></span></h3></span>
+                    <span class="stat col-xs-6"><h3>Now Drawing: Player <span class="player-value"></span></h3></span>
+                    <span class="stat col-xs-6">
+                        <h3 class="pull-right">
+                            Clicks left: <span class="clicks-value"></span><br>
+                            Round: <span class="round-value"></span>&#47;<span class="round-max"></span>
+                        </h3>
+                    </span>
             </div>
             </div>
 
