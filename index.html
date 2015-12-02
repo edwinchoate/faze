@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> 
         <!-- Bootstrap.css -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="css/animate.min.css">
         <!-- Custom Sass -->
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -50,7 +52,7 @@
         <div id="content"> <!-- content beginning -->
         <main class="container">
             <!-- intro panel for selecting game preferences -->
-            <div id="intro-panel">
+            <div id="intro-panel" class="animated fadeIn">
                 <div class="row">
                     <h2 class="text-center">Pick a size.</h2>
                     <div id="grid-selector-group" class="text-center">
@@ -72,7 +74,7 @@
                 </div>
             </div>
             
-            <div id="notification-panel">
+            <div id="notification-panel" class="animated fadeIn">
                 <div class="row">
                     <span class="col-xs-12 text-center"><h1>It's Player <span class="player-value"></span>&#39;s turn!</h1></span>
                     <span class="col-xs-12 text-center"><button id="start-turn-btn" class="btn btn-lg btn-default">Continue</button></span>
@@ -80,7 +82,7 @@
             </div>
             
             <!-- main game board element which holds cells -->
-            <div id="game-board"></div>
+            <div id="game-board" class="animated fadeIn"></div>
             
             <!-- stats bar contains current player turn and remaining click count -->
             <div class="row">

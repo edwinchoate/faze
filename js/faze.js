@@ -221,6 +221,19 @@ function fadeGameBoard() {
             $gameBoardSize = 48;
         }
         
+        
+        
+        // animate the button that was clicked
+        $this.addClass("animated flip");
+        $this.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $this.removeClass("animated flip");
+            // highlight the selected size mode 
+            $gridSelector.each(function () {
+                $(this).css("border-bottom", "none"); 
+            });
+            $this.css("border-bottom", "8px solid black")
+        });
+        
         // enable the start button
         $startButton.removeAttr("disabled").slideDown(600, function () {});
         
@@ -261,7 +274,7 @@ function fadeGameBoard() {
             } else if (selectedSize === "lg") {
                 var newCell = "<a><button class=\"cell cell-lg\"></button></a>";
             } else { // game board defaults to md size
-                var newCell = "<a><button class=\"cell cell-md\"></button></a>";
+                var newCell = "<a><button class=\"cell cell-md  \"></button></a>";
             }
             
             $gameBoard.append(newCell);

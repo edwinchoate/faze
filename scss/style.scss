@@ -48,8 +48,7 @@ a, button, btn {
 a {
     
     .base-cell {
-        // removes whitespace in between cells of game board
-        
+        // removes whitespace in between cells of game board       
         font-size: 0;
         
         background-color: $game-board-base-color;
@@ -84,6 +83,7 @@ a {
         width: $cell-dim-lg;
         height: $cell-dim-lg;
     }
+    
     
 }
 
@@ -148,6 +148,7 @@ footer {
         margin: 0 auto 0 auto;
         
         .grid-selector {
+            padding-bottom: 32px;
             margin: 0 32px 0 32px;
         }
     }

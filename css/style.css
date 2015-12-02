@@ -87,6 +87,7 @@ footer {
   padding: 71.25px 0 71.25px 0;
   margin: 0 auto 0 auto; }
   #intro-panel #grid-selector-group .grid-selector, #intro-panel #game-start-btn .grid-selector {
+    padding-bottom: 32px;
     margin: 0 32px 0 32px; }
 
 #notification-panel h1, #notification-panel h2, #notification-panel h3, #notification-panel h4, #notification-panel h5, #notification-panel h6, #notification-panel button {
