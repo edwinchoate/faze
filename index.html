@@ -17,8 +17,15 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- Animate.css -->
         <link rel="stylesheet" href="css/animate.min.css">
-        <!-- Custom Sass -->
-        <link rel="stylesheet" href="css/style.css">
+        <script>
+            var customCSS = document.createElement("link");
+            customCSS.type = "text/css";
+            customCSS.rel = "stylesheet";
+            var colors = ["gray", "red", "orange", "green", "blue", "purple"];
+            var i = Math.floor(Math.random() * colors.length);
+            customCSS.href = "css/" + colors[i] + ".css";
+            document.getElementsByTagName("head")[0].appendChild(customCSS);
+        </script>
     </head>
     <body>
         
