@@ -8,6 +8,7 @@ $bg-color: lighten($game-board-base-color, 15%);
 $footer-bg-color: lighten($game-board-base-color, 10%);
 
 html, body {
+    font-family: 'Quantico', sans-serif;
     background-color: $bg-color;
     -webkit-user-select: none; /* webkit (safari, chrome) browsers */
     -moz-user-select: none; /* mozilla browsers */
@@ -15,11 +16,33 @@ html, body {
     -ms-user-select: none; /* IE10+ */
 }
 
+h1, h2, h3, h4, h5, h6, p, span, a, button, .btn {
+    color: darken($game-board-base-color, 30%);
+}
+
+a, button {
+    &:visited, &:active, &:link {
+        text-decoration: none;
+        color: darken($game-board-base-color, 30%);
+    }
+    
+    &:hover {
+        text-decoration: none;
+        color: darken($game-board-base-color, 10%);
+    }
+}
+
 a, button, btn {
+    border-radius: 1% !important;
+    
     // removes annoying blue border from buttons
     &:focus {
         outline: 0 !important;
     }
+}
+
+.btn {
+    border: none;
 }
 
 a {
@@ -80,11 +103,11 @@ header {
 }
 
 .cancel-x {
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
     position: relative;
-        top: -36px;
-        left: 24px;
+        top: -56px;
+        left: 30px;
 }
 
 .wrapper {
@@ -102,6 +125,9 @@ footer {
     position: absolute;
         bottom: 0;
         left: 0;
+    p {
+        color: darken($game-board-base-color, 10%) !important;
+    }
     background-color: $footer-bg-color;
     width: 100%;
     padding: 96px 0 72px 0;

@@ -1,4 +1,5 @@
 html, body {
+  font-family: 'Quantico', sans-serif;
   background-color: #f2f2f2;
   -webkit-user-select: none;
   /* webkit (safari, chrome) browsers */
@@ -9,8 +10,23 @@ html, body {
   -ms-user-select: none;
   /* IE10+ */ }
 
-a:focus, button:focus, btn:focus {
-  outline: 0 !important; }
+h1, h2, h3, h4, h5, h6, p, span, a, button, .btn {
+  color: gray; }
+
+a:visited, a:active, a:link, button:visited, button:active, button:link {
+  text-decoration: none;
+  color: gray; }
+a:hover, button:hover {
+  text-decoration: none;
+  color: #b3b3b3; }
+
+a, button, btn {
+  border-radius: 1% !important; }
+  a:focus, button:focus, btn:focus {
+    outline: 0 !important; }
+
+.btn {
+  border: none; }
 
 a .base-cell, a .cell, a .cell-sm, a .cell-md, a .cell-lg {
   font-size: 0;
@@ -38,11 +54,11 @@ header {
     padding: 48px 48px 64px 48px; }
 
 .cancel-x {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
   position: relative;
-  top: -36px;
-  left: 24px; }
+  top: -56px;
+  left: 30px; }
 
 .wrapper {
   position: relative;
@@ -60,6 +76,8 @@ footer {
   background-color: #e6e6e6;
   width: 100%;
   padding: 96px 0 72px 0; }
+  footer p {
+    color: #b3b3b3 !important; }
 
 .panel, #intro-panel, #notification-panel {
   width: 1140px;
