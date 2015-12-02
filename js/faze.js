@@ -1,8 +1,10 @@
 
 // the game board DOM element. All of the buttons (cells) lie inside this div
 var $gameBoard = $("#game-board");
+var $helpPanel = $("#help-panel");
 var $statsBar = $("#stats-bar");
 var $notificationPanel = $("#notification-panel");
+var $startButton = $("#start-btn");
 var $playerValue = $(".player-value");
 var $clicksValue = $(".clicks-value");
 var $roundValue = $(".round-value");
@@ -125,17 +127,55 @@ function darkenCell() {
     $oldColor = rgbToHex(parseInt(colors[0]), parseInt(colors[1]), parseInt(colors[2]));
 
     // darkens the original color by X percent
-    var newColor = darkenColor($oldColor, "4%");
+    var newColor = darkenColor($oldColor, "10%");
     
     // resets the css for the appropriate button (cell)
     $cell.css("background-color", newColor);
 }
 
 
+// gives all cells a random color (at start of game)
+function randomizeCells () {
+    $(".cell").each(function () {
+        var $cell = $(this);
+        var $oldColor = $cell.css("background-color");
+
+        // parses the css rgb() string to change color of cell
+        var colors = $oldColor.substring($oldColor.indexOf('(') +1, $oldColor.lastIndexOf(')')).split(/,\s*/);
+
+        // coverts color String to hex value
+        $oldColor = rgbToHex(parseInt(colors[0]), parseInt(colors[1]), parseInt(colors[2]));
+        
+        // how much each cell is randomly changed
+        var range = 10;
+        var base = 30;
+        var percentage = Math.floor((Math.random() * range) + base);
+        var newColor = darkenColor($oldColor, percentage + "%");
+        
+        // resets the css for the appropriate button (cell)
+        $cell.css("background-color", newColor);
+    });
+}
+
+
 // each turn, the whole board fades
 // param amount The percentage each cell's color lightens
-function fadeGameBoard(amount) {
-    // todo
+function fadeGameBoard() {
+    $(".cell").each(function () {
+        var $cell = $(this);
+        var $oldColor = $cell.css("background-color");
+
+        // parses the css rgb() string to change color of cell
+        var colors = $oldColor.substring($oldColor.indexOf('(') +1, $oldColor.lastIndexOf(')')).split(/,\s*/);
+
+        // coverts color String to hex value
+        $oldColor = rgbToHex(parseInt(colors[0]), parseInt(colors[1]), parseInt(colors[2]));
+        
+        var newColor = lightenColor($oldColor, "7%");
+        
+        // resets the css for the appropriate button (cell)
+        $cell.css("background-color", newColor);
+    });
 }
 
 
@@ -143,7 +183,7 @@ function fadeGameBoard(amount) {
 (function main() {
     
     // hide gameboard at start of program
-    var objectsToHide = [$gameBoard, $statsBar, $notificationPanel];
+    var objectsToHide = [$gameBoard, $helpPanel, $statsBar, $notificationPanel, $startButton];
     for (var i = 0; i < objectsToHide.length; i++) {
         objectsToHide[i].hide();
     }
@@ -181,12 +221,20 @@ function fadeGameBoard(amount) {
             $gameBoardSize = 48;
         }
         
-        console.log("you selected", selectedSize, $gameBoardSize);
+        // enable the start button
+        $startButton.removeAttr("disabled").slideDown(600, function () {});
+        
+        // build the game board
         $("#start-btn").on("click", function() {
             $("#intro-panel").hide();
             buildGame();
         });
         
+    });
+    
+    // click hanlder for the help panel 
+    $(".help-link, .cancel-x").on("click", function () {
+        $helpPanel.fadeToggle();
     });
     
     // click handler for the notification panel
@@ -204,7 +252,6 @@ function fadeGameBoard(amount) {
         // total number of cells rows on $gameBoard
         var gameBoardRows = Math.floor($gameBoardSize * gameBoardRatioY / gameBoardRatioX);
         var cellTotal = $gameBoardSize * gameBoardRows;
-        console.log("game board is", $gameBoardSize, "by", gameBoardRows, cellTotal);
         
         $gameBoard.empty();
         // add cell elements to game board elements
@@ -219,6 +266,11 @@ function fadeGameBoard(amount) {
             
             $gameBoard.append(newCell);
         }
+        
+        
+        // randomize the color of each cell
+        randomizeCells();
+        
         
         // click handler for drawing on a cell
         $(".cell").on("click", darkenCell);
@@ -245,7 +297,7 @@ function fadeGameBoard(amount) {
             clickCount--;
             var inFinalTurn = roundCount >= roundMax && currentPlayer == 2;
 
-            // when a player has no clicks left
+            // end of each turn
             if (clickCount <= 0) {
 
                 if (inFinalTurn) {
@@ -257,6 +309,7 @@ function fadeGameBoard(amount) {
                         "</span>"
                     );
                     stillPlaying = false;
+                    $(".cell").off("click", darkenCell);
                 }
 
                 // switch players
@@ -266,6 +319,7 @@ function fadeGameBoard(amount) {
                     currentPlayer = 1;
                     // next round
                     roundCount++;
+                    fadeGameBoard();
                 }
 
 
@@ -278,6 +332,7 @@ function fadeGameBoard(amount) {
                     $statsBar.hide();
                     $notificationPanel.show();
                 }
+                
             }
 
             updateStatDisplay();

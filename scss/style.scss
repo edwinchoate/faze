@@ -9,6 +9,10 @@ $footer-bg-color: lighten($game-board-base-color, 10%);
 
 html, body {
     background-color: $bg-color;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
 }
 
 a, button, btn {
@@ -67,6 +71,20 @@ header {
     .help-link {
         margin: 8px;
     }
+    
+    #help-panel {
+        background-color: $footer-bg-color;
+        border-radius: 2;
+        padding: 48px 48px 64px 48px;
+    }
+}
+
+.cancel-x {
+    font-size: 2em;
+    font-weight: bold;
+    position: relative;
+        top: -36px;
+        left: 24px;
 }
 
 .wrapper {

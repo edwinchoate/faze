@@ -1,5 +1,13 @@
 html, body {
-  background-color: #f2f2f2; }
+  background-color: #f2f2f2;
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -khtml-user-select: none;
+  /* webkit (konqueror) browsers */
+  -ms-user-select: none;
+  /* IE10+ */ }
 
 a:focus, button:focus, btn:focus {
   outline: 0 !important; }
@@ -24,6 +32,17 @@ header {
   margin: 64px 0 12px 0; }
   header .help-link {
     margin: 8px; }
+  header #help-panel {
+    background-color: #e6e6e6;
+    border-radius: 2;
+    padding: 48px 48px 64px 48px; }
+
+.cancel-x {
+  font-size: 2em;
+  font-weight: bold;
+  position: relative;
+  top: -36px;
+  left: 24px; }
 
 .wrapper {
   position: relative;
