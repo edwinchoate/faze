@@ -1,6 +1,6 @@
 html, body {
   font-family: 'Quantico', sans-serif;
-  background-color: #ff4d4d;
+  background-color: #dae9da;
   -webkit-user-select: none;
   /* webkit (safari, chrome) browsers */
   -moz-user-select: none;
@@ -11,14 +11,14 @@ html, body {
   /* IE10+ */ }
 
 h1, h2, h3, h4, h5, h6, p, span, a, button, .btn {
-  color: #660000; }
+  color: #538a53; }
 
 a:visited, a:active, a:link, button:visited, button:active, button:link, .btn:visited, .btn:active, .btn:link {
   text-decoration: none;
-  color: #660000; }
+  color: #538a53; }
 a:hover, button:hover, .btn:hover {
   text-decoration: none;
-  color: #cc0000 !important; }
+  color: #8ab98a !important; }
 
 a, button, btn {
   border-radius: 1% !important; }
@@ -27,13 +27,13 @@ a, button, btn {
 
 .btn {
   border: none;
-  background-color: #ff6666; }
+  background-color: #eaf2ea; }
   .btn:hover, .btn:active {
-    background-color: #ff8080 !important; }
+    background-color: #fafcfa !important; }
 
 a .base-cell, a .cell, a .cell-sm, a .cell-md, a .cell-lg {
   font-size: 0;
-  background-color: red;
+  background-color: #aaccaa;
   border: none; }
 a .cell {
   float: left; }
@@ -52,7 +52,7 @@ header {
   header .help-link {
     margin: 8px; }
   header #help-panel {
-    background-color: #ff3333;
+    background-color: #cadfca;
     border-radius: 2;
     padding: 48px 48px 64px 48px; }
 
@@ -76,11 +76,11 @@ footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #ff3333;
+  background-color: #cadfca;
   width: 100%;
   padding: 96px 0 72px 0; }
   footer p {
-    color: #cc0000 !important; }
+    color: #8ab98a !important; }
 
 .panel, #intro-panel, #notification-panel {
   width: 1140px;

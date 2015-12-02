@@ -26,7 +26,7 @@ function lightenColor(color, amount) {
     var colorValue = parseInt(color, 16);
     
     // adjust red value
-    var r = ((colorValue >> 16) & 0x0000FF) + diff;
+    var r = (colorValue >> 16) + diff;
     if (r > 255) {
         r = 255;
     } else if  (r < 0) {
@@ -34,7 +34,7 @@ function lightenColor(color, amount) {
     }
     
     // adjust green value
-    var g = ((colorValue >> 8) & 0x0000FF) + diff;
+    var g = ((colorValue >> 8) & 0x00FF) + diff;
     if (g > 255) {
         g = 255;
     } else if  (g < 0) {
@@ -50,7 +50,7 @@ function lightenColor(color, amount) {
     }
     
     // return hex-formatting color string
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+    return (usePound?"#":"") + (b | (g << 8) | (r << 16)).toString(16);
 }
 
 
@@ -69,7 +69,7 @@ function darkenColor(color, amount) {
     var colorValue = parseInt(color, 16);
     
     // adjust red value
-    var r = ((colorValue >> 16) & 0x0000FF) - diff;
+    var r = (colorValue >> 16) - diff;
     if (r > 255) {
         r = 255;
     } else if  (r < 0) {
@@ -77,7 +77,7 @@ function darkenColor(color, amount) {
     }
     
     // adjust green value
-    var g = ((colorValue >> 8) & 0x0000FF) - diff;
+    var g = ((colorValue >> 8) & 0x00FF) - diff;
     if (g > 255) {
         g = 255;
     } else if  (g < 0) {
@@ -93,7 +93,7 @@ function darkenColor(color, amount) {
     }
     
     // return hex-formatting color string
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+    return (usePound?"#":"") + (b | (g << 8) | (r << 16)).toString(16);
 }
 
 
