@@ -231,7 +231,12 @@ function fadeGameBoard() {
             $gridSelector.each(function () {
                 $(this).css("border-bottom", "none"); 
             });
-            $this.css("border-bottom", "8px solid black")
+            var $tickColor = $(".intro-prompt").css("color");
+            // parses the css rgb() string to change color of cell
+            var colors = $tickColor.substring($tickColor.indexOf('(') +1, $tickColor.lastIndexOf(')')).split(/,\s*/);
+            $tickColor = rgbToHex(parseInt(colors[0]), parseInt(colors[1]), parseInt(colors[2]));
+            
+            $this.css("border-bottom", "8px solid " + $tickColor);
         });
         
         // enable the start button

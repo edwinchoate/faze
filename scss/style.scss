@@ -3,7 +3,7 @@
 $game-board-width: 1140px;
 
 // starting color of the game board cells
-$game-board-base-color: #ccc;
+$game-board-base-color: red;
 $bg-color: lighten($game-board-base-color, 15%);
 $footer-bg-color: lighten($game-board-base-color, 10%);
 
@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, .btn {
     color: darken($game-board-base-color, 30%);
 }
 
-a, button {
+a, button, .btn {
     &:visited, &:active, &:link {
         text-decoration: none;
         color: darken($game-board-base-color, 30%);
@@ -28,7 +28,7 @@ a, button {
     
     &:hover {
         text-decoration: none;
-        color: darken($game-board-base-color, 10%);
+        color: darken($game-board-base-color, 10%) !important;
     }
 }
 
@@ -43,6 +43,11 @@ a, button, btn {
 
 .btn {
     border: none;
+    background-color: lighten($game-board-base-color, 20%);
+    
+    &:hover, &:active {
+        background-color: lighten($game-board-base-color, 25%) !important;
+    }
 }
 
 a {
