@@ -171,7 +171,7 @@ function fadeGameBoard() {
         // coverts color String to hex value
         $oldColor = rgbToHex(parseInt(colors[0]), parseInt(colors[1]), parseInt(colors[2]));
         
-        var newColor = lightenColor($oldColor, "7%");
+        var newColor = lightenColor($oldColor, "12%");
         
         // resets the css for the appropriate button (cell)
         $cell.css("background-color", newColor);
@@ -190,10 +190,13 @@ function fadeGameBoard() {
     
     // player 1 takes the first turn
     var currentPlayer = 1;
-    var clickMax, clickCount, roundMax, roundCount;
+    var clickMaxSm, clickMaxMd, clickMaxLg, clickCount, clickMax, roundMax, roundCount;
     // number of clicks a player is allowed each turn
-    clickMax = 5;
-    clickCount = clickMax;
+    clickMaxSm = 64;
+    clickMaxMd = 36;
+    clickMaxLg = 16;
+    clickMax = clickMaxMd // game defaults to medium
+    clickCount = clickMax; 
     // number of rounds in the game
     // a round is defined as one turn taken by each player
     roundMax = 5;
@@ -285,9 +288,20 @@ function fadeGameBoard() {
             $gameBoard.append(newCell);
         }
         
+        if (selectedSize === "sm") {
+            clickMax = clickMaxSm;
+            clickCount = clickMax;
+        } else if (selectedSize === "lg") {
+            clickMax = clickMaxLg;
+            clickCount = clickMax;
+        } else { // default to md size
+            clickMax = clickMaxMd;
+            clickCount = clickMax;
+        }
         
         // randomize the color of each cell
         randomizeCells();
+        updateStatDisplay();
         
         
         // click handler for drawing on a cell
@@ -305,9 +319,6 @@ function fadeGameBoard() {
         $clicksValue.text(clickCount);
         $roundValue.text(roundCount);
     }
-    
-    // show stats as game begins
-    updateStatDisplay();
     
     // game logic for when player clicks a cell
     function clickCell () {
