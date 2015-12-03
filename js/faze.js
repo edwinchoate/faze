@@ -192,7 +192,7 @@ function fadeGameBoard() {
     $bgColor = $("html").css("background-color");
     console.log($bgColor);
     $logoImg = $("#faze-logo");
-    var imgPath = "../img/logo-";
+    var imgPath = "img/logo-";
     switch($bgColor) {
         case "rgb(230, 242, 255)": 
             $logoImg.attr("src", imgPath + "blue.png");
