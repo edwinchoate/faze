@@ -49,6 +49,8 @@ a .cell-lg {
 
 header {
   margin: 64px 0 12px 0; }
+  header #faze-logo {
+    max-width: 128px; }
   header .help-link {
     margin: 8px; }
   header #help-panel {

@@ -188,6 +188,32 @@ function fadeGameBoard() {
         objectsToHide[i].hide();
     }
     
+    // load the color-approprite logo on page
+    $bgColor = $("html").css("background-color");
+    console.log($bgColor);
+    $logoImg = $("#faze-logo");
+    var imgPath = "/img/logo-";
+    switch($bgColor) {
+        case "rgb(230, 242, 255)": 
+            $logoImg.attr("src", imgPath + "blue.png");
+            break;
+        case "rgb(255, 179, 179)":
+            $logoImg.attr("src", imgPath + "red.png");
+            break;
+        case "rgb(231, 196, 100)":
+            $logoImg.attr("src", imgPath + "gold.png");
+            break;
+        case "rgb(242, 230, 255)":
+            $logoImg.attr("src", imgPath + "purple.png");
+            break;
+        case "rgb(210, 240, 210)":
+            $logoImg.attr("src", imgPath + "green.png");
+            break;
+        default: // defaults to gray logo
+            $logoImg.attr("src", imgPath + "gray.png");
+            break;
+    }
+    
     // player 1 takes the first turn
     var currentPlayer = 1;
     var clickMaxSm, clickMaxMd, clickMaxLg, clickCount, clickMax, roundMax, roundCount;
