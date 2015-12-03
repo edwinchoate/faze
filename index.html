@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>faze</title>
+        <title>welcome to faze</title>
     
         <meta charset="UTF-8">
         <meta name="keywords" content="faze, Faze, game, faze game, Faze Game, puzzle, challenge, drawing, multiplayer">
@@ -18,13 +18,24 @@
         <!-- Animate.css -->
         <link rel="stylesheet" href="css/animate.min.css">
         <script>
-            var customCSS = document.createElement("link");
-            customCSS.type = "text/css";
-            customCSS.rel = "stylesheet";
+            // pick a color at random
             var colors = ["gray", "red", "gold", "green", "blue", "purple"];
             var i = Math.floor(Math.random() * colors.length);
-            customCSS.href = "css/" + colors[i] + ".css";
+            var color = colors[i];
+            
+            // create link to color-appropriate .css file
+            var customCSS = document.createElement("link");
+                customCSS.type = "text/css";
+                customCSS.rel = "stylesheet";
+                customCSS.href = "css/" + color + ".css";
             document.getElementsByTagName("head")[0].appendChild(customCSS);
+            
+            // create link to color-appropriate favicon
+            var favicon = document.createElement("link");
+                favicon.type = "image/png";
+                favicon.rel = "icon";
+                favicon.href = "img/favicon-" + color + ".png";
+            document.getElementsByTagName("head")[0].appendChild(favicon);
         </script>
     </head>
     <body>
