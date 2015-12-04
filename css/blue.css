@@ -57,6 +57,10 @@ header {
     background-color: #cce6ff;
     border-radius: 2;
     padding: 48px 48px 64px 48px; }
+    header #help-panel p {
+      line-height: 200%; }
+      header #help-panel p br {
+        line-height: 300%; }
 
 .cancel-x {
   font-size: 3em;

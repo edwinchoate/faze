@@ -104,6 +104,15 @@ header {
         background-color: $footer-bg-color;
         border-radius: 2;
         padding: 48px 48px 64px 48px;
+        
+        p {
+            line-height: 200%;
+            
+            br {
+                line-height: 300%;
+            }
+        }
+        
     }
 }
 
