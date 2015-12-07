@@ -13,6 +13,6 @@ The game is meant to be played silently; don't talk to the other player about wh
 
 Feel free to experience with new ways to play the game! You can create new rules to make the game your own.
 
-Currently **Faze** works only on desktop platforms. If you experience any technical issues on small screen sizes, try to migrate to a device with a screen at least ``1170 pixels`` wide. If you have any questions or ideas, don't hesitate to shoot me an email at [edwin.choate@gmail.com](mailto:edwin.choate@gmail.com).
+Currently **Faze** works only on desktop platforms. If you experience any technical issues on small screen sizes, try to migrate to a device with a screen at least ``1170 px`` wide. If you have any questions or ideas, don't hesitate to shoot me an email at [edwin.choate@gmail.com](mailto:edwin.choate@gmail.com).
 
 Enjoy!
